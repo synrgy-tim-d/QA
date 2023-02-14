@@ -1,2 +1,2 @@
 # QA
-Repository of Team D "Naqos" QA for Web Automation Testing
+Repository of Team D "Naqos" QA for Mobile Android Automation Testing
