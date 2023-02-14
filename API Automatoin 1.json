@@ -1,0 +1,2172 @@
+{
+	"info": {
+		"_postman_id": "aa62d830-690d-4f45-bbfc-c35e7a02858e",
+		"name": "NAQOS API  AUTOMATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25380302"
+	},
+	"item": [
+		{
+			"name": "[+] Register and Login with VALID email and VALID password",
+			"item": [
+				{
+					"name": "Post New Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email\");\r",
+									"});\r",
+									"\r",
+									"var new_email = pm.response.json()[\"Email\"];\r",
+									"\r",
+									"if (new_email == null){\r",
+									"    console.log(\"No new email!\");\r",
+									"    postman.setNextRequest(\"Post New Email\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.collectionVariables.set(\"random_new_email\", new_email);\r",
+									"    postman.setNextRequest(\"Register with Valid Email and Password\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function getRandomInt(max) {\r",
+									"  return Math.floor(Math.random() * max);\r",
+									"}\r",
+									"\r",
+									"const nama = [\"Dwi\",\"Muhammad\",\"Putra\",\"Dian\",\"Indah\",\"Tri\",\"Agus\",\"Ade\",\"Nur\",\"Fitri\",\"Andi\",\"Reza\",\"Rio\",\"Siti\",\"Andy\",\"Yudi\",\"Arya\",\"Ika\",\"Maya\",\"Lestari\",\"Ahmad\",\"Kurniawan\",\"Ilham\",\"Budi\",\"Adi\",\"Eko\",\"Nurul\",\"Bambang\",\"Ni\",\"Arif\",\"Puspita\",\"Ari\",\"Indra\",\"Dyah\",\"Rizki\",\"Maria\",\"Ratih\",\"Pratiwi\",\"Kartika\",\"Wulandari\",\"Fajar\",\"Bayu\",\"Lestari\",\"Anita\",\"Kusuma\",\"Rahmawati\",\"Fitria\",\"Retno\",\"Kurnia\",\"Novita\",\"Aditya\",\"Ria\",\"Nugroho\",\"Putu\",\"Handayani\",\"Rahayu\",\"Yunita\",\"Rina\",\"Widya\",\"Intan\",\"Diah\",\"Agustina\",\"Made\",\"Abdul\",\"Setiawan\",\"Rizky\",\"Rini\",\"Wahyuni\",\"Yulia\",\"Puji\",\"Utami\",\"Amalia\",\"Dina\",\"Devi\",\"Citra\",\"Arief\",\"Munaroh\",\"Bagus\",\"Hidayat\",\"Hendra\",\"Eva\",\"Endah\",\"Raden\",\"Novi\",\"Irma\",\"Astuti\",\"Aulia\",\"Surya\",\"Amelia\",\"Prima\",\"Angga\",\"Hadi\",\"Diana\",\"Anggraini\",\"Wulan\",\"Saputra\",\"Yuni\",\"Agung\",\"Dinda\"]\r",
+									"\r",
+									"pm.collectionVariables.set(\"nama_depan\", nama[getRandomInt(nama.length)]);\r",
+									"pm.collectionVariables.set(\"nama_belakang\", nama[getRandomInt(nama.length)]);\r",
+									"\r",
+									"pm.collectionVariables.set(\"telp\", \"08\" + String(Math.floor(Math.random() * 111111111) + 111111111));\r",
+									"\r",
+									"// console.log(pm.collectionVariables.get(\"nama_depan\") + \" \" + pm.collectionVariables.get(\"nama_belakang\"));\r",
+									"// console.log(pm.collectionVariables.get(\"telp\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"content-length": true
+						},
+						"disableCookies": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "tempmail.dev",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "PHPSESSID=z",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Origin",
+								"value": "https://tempmail.dev",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Dnt",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "https://tempmail.dev/id",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Te",
+								"value": "trailers",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://tempmail.dev/Email/newEmail",
+							"protocol": "https",
+							"host": [
+								"tempmail",
+								"dev"
+							],
+							"path": [
+								"Email",
+								"newEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register with Valid Email and Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"var resp = \"\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    resp = pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"Register User Success\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									"\r",
+									"if (resp) {\r",
+									"    pm.collectionVariables.set(\"flag\", 0)\r",
+									"    postman.setNextRequest(\"Post Read Inbox Register\")\r",
+									"}\r",
+									"\r",
+									"else postman.setNextRequest(\"Register with Valid Email and Password Random\")\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "be-naqos.up.railway.app",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{random_new_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\",\r\n    \"fullname\": \"RANDOM {{nama_depan}} {{nama_belakang}}\",\r\n    \"phoneNumber\": \"{{telp}}\",\r\n    \"role\": \"PENYEWA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-register/register",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-register",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Read Inbox Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var text = pm.response.json();\r",
+									"// console.log(text)\r",
+									"function getOtp(tx, flag){\r",
+									"    // console.log(tx)\r",
+									"    let pattern_1 = /register-confirm-otp\\/([0-9]{6})/;\r",
+									"    var result = pattern_1.exec(tx)[1];\r",
+									"    if (result.length > 0){\r",
+									"        return result\r",
+									"    }\r",
+									"    else {\r",
+									"        console.log(\"OTP NOT FOUND\");\r",
+									"        setTimeout(() => {}, 1000*3); \r",
+									"        postman.setNextRequest(\"Post Read Inbox Register\");\r",
+									"    }\r",
+									"}\r",
+									"let flag = pm.collectionVariables.get(\"flag\");\r",
+									"if (text.length > 0){\r",
+									"    var otp = getOtp(text[0][\"bodyHtml\"], flag)\r",
+									"    console.log(otp)\r",
+									"    pm.collectionVariables.set(\"otp\", otp);\r",
+									"    postman.setNextRequest(\"Register Confirm OTP\");\r",
+									"}\r",
+									"else {\r",
+									"    console.log(\"INBOX EMPTY\");\r",
+									"    setTimeout(() => {}, 1000*3); \r",
+									"    postman.setNextRequest(\"Post Read Inbox Register\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"content-length": true
+						},
+						"disableCookies": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "tempmail.dev",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "PHPSESSID=z",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Origin",
+								"value": "https://tempmail.dev",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Dnt",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "https://tempmail.dev/id",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Te",
+								"value": "trailers",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://tempmail.dev/Email/inbox",
+							"protocol": "https",
+							"host": [
+								"tempmail",
+								"dev"
+							],
+							"path": [
+								"Email",
+								"inbox"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Confirm OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var resp = \"\"\r",
+									"const sch = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    resp = pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"Sukses, Silahkan Melakukan Login\");\r",
+									"});\r",
+									"\r",
+									"if (resp){\r",
+									"    pm.test(\"Check JSON Schema\", function () {\r",
+									"        pm.response.to.have.jsonSchema(sch);\r",
+									"    });\r",
+									"    postman.setNextRequest(\"Login Valid Username and Password\");\r",
+									"}\r",
+									"else {\r",
+									"    postman.setNextRequest(\"Post Read Inbox\")\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"host": true,
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Host",
+								"value": "be-naqos.up.railway.app",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-register/register-confirm-otp/{{otp}}",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-register",
+								"register-confirm-otp",
+								"{{otp}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Valid Username and Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"access_token\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"refresh_token\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"role\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"code\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"user_id\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"scope\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"token_type\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"expires_in\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"jti\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"access_token\",\r",
+									"        \"refresh_token\",\r",
+									"        \"role\",\r",
+									"        \"code\",\r",
+									"        \"user_id\",\r",
+									"        \"scope\",\r",
+									"        \"token_type\",\r",
+									"        \"expires_in\",\r",
+									"        \"jti\",\r",
+									"        \"status\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"message\"].toString()).to.equal(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{random_new_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-login/login",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-login",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[+] Forgot Password Flow",
+			"item": [
+				{
+					"name": "Forgot Password Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var resp = \"\"\r",
+									"const sch = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    resp = pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"success\");\r",
+									"});\r",
+									"\r",
+									"if (resp) {\r",
+									"    pm.collectionVariables.set(\"flag\", 1);\r",
+									"    pm.test(\"Check JSON Schema\", function () {\r",
+									"        pm.response.to.have.jsonSchema(sch);\r",
+									"    });\r",
+									"    postman.setNextRequest(\"Post Read Inbox Forgot Password\");\r",
+									"}\r",
+									"else {\r",
+									"    postman.setNextRequest(\"Forgot Password Request\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{random_new_email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/forget-password/forgot-password",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"forget-password",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Read Inbox Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var text = pm.response.json();\r",
+									"// console.log(text)\r",
+									"setTimeout(() => {}, 1000*2); \r",
+									"function getOtp(tx, flag){\r",
+									"\r",
+									"    let pattern = /<b>([0-9]{6})/g;\r",
+									"    var result = pattern.exec(tx)[1];\r",
+									"    // console.log(result)\r",
+									"    if (result.length > 0){\r",
+									"        return result\r",
+									"    }\r",
+									"    else {\r",
+									"        console.log(\"OTP NOT FOUND\");\r",
+									"        setTimeout(() => {}, 1000*3); \r",
+									"        postman.setNextRequest(\"Post Read Inbox Forgot Password\");\r",
+									"    }\r",
+									"}\r",
+									"let flag = pm.collectionVariables.get(\"flag\");\r",
+									"// console.log(text.length)\r",
+									"if (text.length > 1){\r",
+									"    var otp = getOtp(text[0][\"bodyHtml\"], flag)\r",
+									"    console.log(otp)\r",
+									"    pm.collectionVariables.set(\"otp\", otp);\r",
+									"    postman.setNextRequest(\"Forgot Password Reset Password\");\r",
+									"}\r",
+									"else {\r",
+									"    console.log(\"NO NEW EMAIL\");\r",
+									"    setTimeout(() => {}, 1000*3); \r",
+									"    postman.setNextRequest(\"Post Read Inbox Forgot Password\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"content-length": true
+						},
+						"disableCookies": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "tempmail.dev",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "PHPSESSID=z",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Origin",
+								"value": "https://tempmail.dev",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Dnt",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "https://tempmail.dev/id",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Te",
+								"value": "trailers",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://tempmail.dev/Email/inbox",
+							"protocol": "https",
+							"host": [
+								"tempmail",
+								"dev"
+							],
+							"path": [
+								"Email",
+								"inbox"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var resp = \"\"\r",
+									"const sch = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    resp = pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"success\");\r",
+									"});\r",
+									"\r",
+									"if (resp) {\r",
+									"    postman.setNextRequest(\"Login Valid Username and Password after Forgot Password\")\r",
+									"    pm.test(\"Check JSON Schema\", function () {\r",
+									"        pm.response.to.have.jsonSchema(sch);\r",
+									"    });\r",
+									"}\r",
+									"else postman.setNextRequest(\"Forgot Password Request from Forgot Password\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{random_new_email}}\",\r\n  \"otp\": \"{{otp}}\",\r\n  \"newPassword\": \"{{finder_valid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/forget-password/forgot-password-reset",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"forget-password",
+								"forgot-password-reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Valid Username and Password after Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"access_token\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"refresh_token\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"role\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"code\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"user_id\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"scope\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"token_type\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"expires_in\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"jti\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"status\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"access_token\",\r",
+									"        \"refresh_token\",\r",
+									"        \"role\",\r",
+									"        \"code\",\r",
+									"        \"user_id\",\r",
+									"        \"scope\",\r",
+									"        \"token_type\",\r",
+									"        \"expires_in\",\r",
+									"        \"jti\",\r",
+									"        \"status\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"message\"].toString()).to.equal(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{random_new_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-login/login",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-login",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Register and Login with VALID BUT ALREADY REGISTERED email",
+			"item": [
+				{
+					"name": "Register with Valid but Already Registered Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"var resp = \"\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    resp = pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"Username sudah ada\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "be-naqos.up.railway.app",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{random_new_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\",\r\n    \"fullname\": \"RANDOM {{nama_depan}} {{nama_belakang}}\",\r\n    \"phoneNumber\": \"{{telp}}\",\r\n    \"role\": \"PENYEWA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-register/register",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-register",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Register and Login with INVALID (format) email",
+			"item": [
+				{
+					"name": "Register with Invalid (format) Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"Mohon masukkan alamat email anda dengan benar\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "be-naqos.up.railway.app",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{finder_invalid_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\",\r\n    \"fullname\": \"RANDOM {{nama_depan}} {{nama_belakang}}\",\r\n    \"phoneNumber\": \"{{telp}}\",\r\n    \"role\": \"PENYEWA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-register/register",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-register",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Register and Login with INVALID (blank) email",
+			"item": [
+				{
+					"name": "Register with Invalid (blank) Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"var resp = \"\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    resp = pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.response.json()[\"data\"].toString().localeCompare(\"username is required.\")\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "be-naqos.up.railway.app",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"{{finder_valid_password}}\",\r\n    \"fullname\": \"RANDOM {{nama_depan}} {{nama_belakang}}\",\r\n    \"phoneNumber\": \"{{telp}}\",\r\n    \"role\": \"PENYEWA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-register/register",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-register",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Register and Login with VALID email and INVALID (length) password",
+			"item": [
+				{
+					"name": "Post New Email Random",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email\");\r",
+									"});\r",
+									"\r",
+									"var new_email = pm.response.json()[\"Email\"];\r",
+									"\r",
+									"if (new_email == null){\r",
+									"    console.log(\"No new email!\");\r",
+									"    postman.setNextRequest(\"Post New Email Random\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.collectionVariables.set(\"random_new_email\", new_email);\r",
+									"    postman.setNextRequest(\"Register with Invalid (length) Password\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function getRandomInt(max) {\r",
+									"  return Math.floor(Math.random() * max);\r",
+									"}\r",
+									"\r",
+									"const nama = [\"Dwi\",\"Muhammad\",\"Putra\",\"Dian\",\"Indah\",\"Tri\",\"Agus\",\"Ade\",\"Nur\",\"Fitri\",\"Andi\",\"Reza\",\"Rio\",\"Siti\",\"Andy\",\"Yudi\",\"Arya\",\"Ika\",\"Maya\",\"Lestari\",\"Ahmad\",\"Kurniawan\",\"Ilham\",\"Budi\",\"Adi\",\"Eko\",\"Nurul\",\"Bambang\",\"Ni\",\"Arif\",\"Puspita\",\"Ari\",\"Indra\",\"Dyah\",\"Rizki\",\"Maria\",\"Ratih\",\"Pratiwi\",\"Kartika\",\"Wulandari\",\"Fajar\",\"Bayu\",\"Lestari\",\"Anita\",\"Kusuma\",\"Rahmawati\",\"Fitria\",\"Retno\",\"Kurnia\",\"Novita\",\"Aditya\",\"Ria\",\"Nugroho\",\"Putu\",\"Handayani\",\"Rahayu\",\"Yunita\",\"Rina\",\"Widya\",\"Intan\",\"Diah\",\"Agustina\",\"Made\",\"Abdul\",\"Setiawan\",\"Rizky\",\"Rini\",\"Wahyuni\",\"Yulia\",\"Puji\",\"Utami\",\"Amalia\",\"Dina\",\"Devi\",\"Citra\",\"Arief\",\"Munaroh\",\"Bagus\",\"Hidayat\",\"Hendra\",\"Eva\",\"Endah\",\"Raden\",\"Novi\",\"Irma\",\"Astuti\",\"Aulia\",\"Surya\",\"Amelia\",\"Prima\",\"Angga\",\"Hadi\",\"Diana\",\"Anggraini\",\"Wulan\",\"Saputra\",\"Yuni\",\"Agung\",\"Dinda\"]\r",
+									"\r",
+									"pm.collectionVariables.set(\"nama_depan\", nama[getRandomInt(nama.length)]);\r",
+									"pm.collectionVariables.set(\"nama_belakang\", nama[getRandomInt(nama.length)]);\r",
+									"\r",
+									"pm.collectionVariables.set(\"telp\", \"08\" + String(Math.floor(Math.random() * 111111111) + 111111111));\r",
+									"\r",
+									"// console.log(pm.collectionVariables.get(\"nama_depan\") + \" \" + pm.collectionVariables.get(\"nama_belakang\"));\r",
+									"// console.log(pm.collectionVariables.get(\"telp\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"content-length": true
+						},
+						"disableCookies": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "tempmail.dev",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "PHPSESSID=z",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Origin",
+								"value": "https://tempmail.dev",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Dnt",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "https://tempmail.dev/id",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Te",
+								"value": "trailers",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://tempmail.dev/Email/newEmail",
+							"protocol": "https",
+							"host": [
+								"tempmail",
+								"dev"
+							],
+							"path": [
+								"Email",
+								"newEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register with Invalid (length) Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"var resp = \"\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    resp = pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"password must have 6 characters or more\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "be-naqos.up.railway.app",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{random_new_email}}\",\r\n    \"password\": \"{{finder_invalid_password}}\",\r\n    \"fullname\": \"RANDOM {{nama_depan}} {{nama_belakang}}\",\r\n    \"phoneNumber\": \"{{telp}}\",\r\n    \"role\": \"PENYEWA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-register/register",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-register",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Login with Invalid (format) Email",
+			"item": [
+				{
+					"name": "Login with Invalid Username (format) and Valid Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Message is User not found\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"]).to.equal(\"User not found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{finder_invalid_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-login/login",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-login",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Login with Valid Email and Invalid (wrong) Password",
+			"item": [
+				{
+					"name": "Login with Valid Username and Invalid Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Message is User not found\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"]).to.equal(\"User not found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{finder_dimas_gmail}}\",\r\n    \"password\": \"{{finder_invalid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-login/login",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-login",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Login with Invalid Email (format) and Valid Password",
+			"item": [
+				{
+					"name": "Login with Invalid Username and Valid Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Message is User not found\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"]).to.equal(\"User not found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{finder_invalid_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-login/login",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-login",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[-] Login with Valid but Unverified Email",
+			"item": [
+				{
+					"name": "Post New Email Random",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email\");\r",
+									"});\r",
+									"\r",
+									"var new_email = pm.response.json()[\"Email\"];\r",
+									"\r",
+									"if (new_email == null){\r",
+									"    console.log(\"No new email!\");\r",
+									"    postman.setNextRequest(\"Post New Email Random\");\r",
+									"}\r",
+									"else {\r",
+									"    pm.collectionVariables.set(\"random_new_email\", new_email);\r",
+									"    postman.setNextRequest(\"Login with Valid but Unverifed Email\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function getRandomInt(max) {\r",
+									"  return Math.floor(Math.random() * max);\r",
+									"}\r",
+									"\r",
+									"const nama = [\"Dwi\",\"Muhammad\",\"Putra\",\"Dian\",\"Indah\",\"Tri\",\"Agus\",\"Ade\",\"Nur\",\"Fitri\",\"Andi\",\"Reza\",\"Rio\",\"Siti\",\"Andy\",\"Yudi\",\"Arya\",\"Ika\",\"Maya\",\"Lestari\",\"Ahmad\",\"Kurniawan\",\"Ilham\",\"Budi\",\"Adi\",\"Eko\",\"Nurul\",\"Bambang\",\"Ni\",\"Arif\",\"Puspita\",\"Ari\",\"Indra\",\"Dyah\",\"Rizki\",\"Maria\",\"Ratih\",\"Pratiwi\",\"Kartika\",\"Wulandari\",\"Fajar\",\"Bayu\",\"Lestari\",\"Anita\",\"Kusuma\",\"Rahmawati\",\"Fitria\",\"Retno\",\"Kurnia\",\"Novita\",\"Aditya\",\"Ria\",\"Nugroho\",\"Putu\",\"Handayani\",\"Rahayu\",\"Yunita\",\"Rina\",\"Widya\",\"Intan\",\"Diah\",\"Agustina\",\"Made\",\"Abdul\",\"Setiawan\",\"Rizky\",\"Rini\",\"Wahyuni\",\"Yulia\",\"Puji\",\"Utami\",\"Amalia\",\"Dina\",\"Devi\",\"Citra\",\"Arief\",\"Munaroh\",\"Bagus\",\"Hidayat\",\"Hendra\",\"Eva\",\"Endah\",\"Raden\",\"Novi\",\"Irma\",\"Astuti\",\"Aulia\",\"Surya\",\"Amelia\",\"Prima\",\"Angga\",\"Hadi\",\"Diana\",\"Anggraini\",\"Wulan\",\"Saputra\",\"Yuni\",\"Agung\",\"Dinda\"]\r",
+									"\r",
+									"pm.collectionVariables.set(\"nama_depan\", nama[getRandomInt(nama.length)]);\r",
+									"pm.collectionVariables.set(\"nama_belakang\", nama[getRandomInt(nama.length)]);\r",
+									"\r",
+									"pm.collectionVariables.set(\"telp\", \"08\" + String(Math.floor(Math.random() * 111111111) + 111111111));\r",
+									"\r",
+									"// console.log(pm.collectionVariables.get(\"nama_depan\") + \" \" + pm.collectionVariables.get(\"nama_belakang\"));\r",
+									"// console.log(pm.collectionVariables.get(\"telp\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true,
+							"host": true,
+							"content-length": true
+						},
+						"disableCookies": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "tempmail.dev",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "PHPSESSID=z",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Origin",
+								"value": "https://tempmail.dev",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Dnt",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "https://tempmail.dev/id",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Te",
+								"value": "trailers",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://tempmail.dev/Email/newEmail",
+							"protocol": "https",
+							"host": [
+								"tempmail",
+								"dev"
+							],
+							"path": [
+								"Email",
+								"newEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with Valid but Unverifed Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Message is User not found\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"]).to.equal(\"User not found\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{random_new_email}}\",\r\n    \"password\": \"{{finder_valid_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/user-login/login",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"user-login",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "naqos_endpoint",
+			"value": "https://be-naqos.up.railway.app/api",
+			"type": "string"
+		},
+		{
+			"key": "random_new_email",
+			"value": ""
+		},
+		{
+			"key": "finder_dimas_gmail",
+			"value": "digoenardi.game3@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "finder_invalid_email",
+			"value": "invalid_email.com",
+			"type": "string"
+		},
+		{
+			"key": "finder_valid_password",
+			"value": "finder001",
+			"type": "string"
+		},
+		{
+			"key": "finder_invalid_password",
+			"value": "p1",
+			"type": "string"
+		},
+		{
+			"key": "owner_dimas_email",
+			"value": "digoenardi.game4@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "owner_valid_password",
+			"value": "owner001",
+			"type": "string"
+		},
+		{
+			"key": "owner_invalid_password",
+			"value": "pass",
+			"type": "string"
+		},
+		{
+			"key": "nama_depan",
+			"value": ""
+		},
+		{
+			"key": "nama_belakang",
+			"value": ""
+		},
+		{
+			"key": "telp",
+			"value": ""
+		},
+		{
+			"key": "act_link",
+			"value": ""
+		},
+		{
+			"key": "otp",
+			"value": ""
+		},
+		{
+			"key": "flag",
+			"value": ""
+		}
+	]
+}
