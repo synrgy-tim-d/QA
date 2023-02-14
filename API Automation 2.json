@@ -1293,6 +1293,99 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "[-] User Update Password with VALID Old Password and INVALID (mismatch) New Password",
+			"item": [
+				{
+					"name": "Put User Update Password with VALID Old Password and INVALID (mismatch) New Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var schema = \r",
+									"{\r",
+									"//   \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"code\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"message\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"code\",\r",
+									"    \"data\",\r",
+									"    \"message\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 406\", function () {\r",
+									"    pm.response.to.have.status(406);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body data is correct\", function () {\r",
+									"    pm.expect(pm.response.json()[\"data\"].toString()).to.equal(\"Password Confirmation Mismatched.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate JSON Schema\", function (){\r",
+									"    pm.response.to.have.jsonSchema(schema)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{current_user_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"{{owner_valid_password}}\",\r\n    \"newPassword\": \"{{finder_valid_password}}\",\r\n    \"confirmPassword\": \"{{finder_invalid_password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{naqos_endpoint}}/users/password",
+							"host": [
+								"{{naqos_endpoint}}"
+							],
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
